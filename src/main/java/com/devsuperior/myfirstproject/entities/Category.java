@@ -1,12 +1,19 @@
 package com.devsuperior.myfirstproject.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	public Integer Id;
 	public String Name;
+	
+	@JsonIgnore
+	public List<Product> products = new ArrayList<>();
 	
 	public Category() {
 		
@@ -32,6 +39,10 @@ public class Category implements Serializable {
 
 	public void setName(String name) {
 		Name = name;
+	}
+
+	public List<Product> getProducts() {
+		return products;
 	}
 
 	@Override

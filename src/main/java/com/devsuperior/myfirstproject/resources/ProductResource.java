@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.devsuperior.myfirstproject.entities.Category;
-import com.devsuperior.myfirstproject.repository.CategoryRepository;
+import com.devsuperior.myfirstproject.entities.Product;
+import com.devsuperior.myfirstproject.repository.ProductRepository;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
 
 	//Injeção de dependência através do framework Spring boot
 	@Autowired
-	private CategoryRepository categoryRepository; 
+	private ProductRepository productRepository; 
 	
 	@GetMapping
-	public ResponseEntity<List<Category>> findAll(){
-		List<Category> categories = categoryRepository.findAll();
+	public ResponseEntity<List<Product>> findAll(){
+		List<Product> products = productRepository.findAll();
 		
-		return ResponseEntity.ok().body(categories);
+		return ResponseEntity.ok().body(products);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Category> findById(@PathVariable Integer id){
-		Category category = categoryRepository.findById(id);
+	public ResponseEntity<Product> findById(@PathVariable Integer id){
+		Product prod = productRepository.findById(id);
 		
-		return ResponseEntity.ok().body(category);
+		return ResponseEntity.ok().body(prod);
 	}
 	
 	
